@@ -1,1 +1,10 @@
 django
+django-environ
+boto3
+django-storages
+psycopg2-binary
+botocore
+crispy-bootstrap5
+django-crispy-forms
+django-storages
+django-cors-headers

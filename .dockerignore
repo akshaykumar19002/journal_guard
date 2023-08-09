@@ -1,1 +1,11 @@
-venv
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+journal_guard/.env
+venv/

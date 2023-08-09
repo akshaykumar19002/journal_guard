@@ -1,2 +1,6 @@
 venv
-*.pyc
+*pycache*
+.idea
+journal_guard/.env
+.vscode
+static/admin
