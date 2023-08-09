@@ -8,3 +8,4 @@ crispy-bootstrap5
 django-crispy-forms
 django-storages
 django-cors-headers
+django-utils-six
