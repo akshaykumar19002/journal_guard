@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="container">
     <h1> Home </h1>
     <p> This is the home page </p>
+
+    <a href="{% url 'journal:add-journal' %}" class="btn btn-primary"> Create a new entry </a>
+</div>
 {% endblock %}

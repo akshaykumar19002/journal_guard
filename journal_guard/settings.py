@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'user.apps.UserConfig',
     'dashboard.apps.DashboardConfig',
+    'journal.apps.JournalConfig',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +88,8 @@ WSGI_APPLICATION = 'journal_guard.wsgi.application'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_URL = 'login'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

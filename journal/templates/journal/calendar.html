@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+<div class="container mt-5">
+    <div id='calendar'></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let calendarEl = document.getElementById('calendar');
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: {{ events|safe }}
+            });
+            calendar.render();
+        });
+    </script>
+</div>
+{% endblock content %}
