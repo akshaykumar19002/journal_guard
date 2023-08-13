@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import *
 from .token import user_tokenizer_generate
+from journal.utils import *
 
 
 class Register(View):
@@ -68,6 +69,8 @@ def email_verification(request, uidb64, token):
 
     if user is not None and user_tokenizer_generate.check_token(user, token):
         user.is_active = True
+        user.hash_salt = generate_hash()
+        user.encryption_required = True
         user.save()
         return redirect('email-verification-success')
     else:
@@ -96,3 +99,7 @@ def user_logout(request):
         pass
     messages.success(request, 'You have been logged out successfully.')
     return redirect('login')
+
+
+def registration_options(request):
+    return render(request, 'user/registration/registration-options.html')

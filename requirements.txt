@@ -10,3 +10,9 @@ django-storages
 django-cors-headers
 django-utils-six
 django-tinymce
+django-allauth
+pytz
+django-extensions
+Werkzeug
+pyOpenSSL
+pycryptodome

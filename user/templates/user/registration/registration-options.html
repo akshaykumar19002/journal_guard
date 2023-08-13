@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% block content %}
+<style>
+
+    body {
+        background-color: gray;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .button {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-3 text-center bg-white shadow-md p-5 form-layout">
+            <h1>Registration Options</h1>
+            <br>
+            <a href="{% provider_login_url "google" %}" class="button btn text-danger p-3 m-1"><i class="icon fa-brands fa-google"></i>&nbsp;Sign up with Google</a>
+            <br>
+            <a href="{% provider_login_url "facebook" %}" class="button btn text-primary p-3 m-1"><i class="fa-brands fa-facebook"></i>&nbsp;Sign up with Facebook</a>
+            <br>
+            <a href="{% provider_login_url "twitter" %}" class="button btn p-3 m-1"><i class="fa-brands fa-x-twitter"></i>&nbsp;Sign up with Twitter</a>
+            <br>
+            <a href="{% provider_login_url "apple" %}" class="button btn p-3 m-1"><i class="fa-brands fa-apple"></i>&nbsp;Sign up with Apple</a>
+            <br>
+            <a href="{% url 'register' %}" class="button btn p-3 m-1"><i class="fa fa-envelope"></i>&nbsp;Sign up with Email</a>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock content %}

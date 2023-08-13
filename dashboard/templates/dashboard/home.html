@@ -1,10 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+</style>
+
+{% if user.is_authenticated %}
+<div class="container">
+    <h1> My Journal </h1>
+
+    <div class="row">
+        <p class="col-md-3"> Your journal entries </p>
+        <a href="{% url 'journal:add-journal' %}" class="col-md-2 offset-7 float-end btn btn-primary"> Create a new entry </a>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-5">
+        {% for entry in journal %}
+            {% include 'dashboard/entry_card.html' %}
+            <br>
+        {% empty %}
+            <p> You have no entries </p>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
 <div class="container">
     <h1> Home </h1>
     <p> This is the home page </p>
 
     <a href="{% url 'journal:add-journal' %}" class="btn btn-primary"> Create a new entry </a>
+    
 </div>
+{% endif %}
 {% endblock %}

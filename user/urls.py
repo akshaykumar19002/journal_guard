@@ -5,6 +5,7 @@ from .views import *
 
 urlpatterns = [
     path('register/', Register.as_view(), name='register'),
+    path('register-options/', registration_options, name='register-options'),
     path('email_verification/<str:uidb64>/<str:token>', email_verification, name='email-verification'),
     path('email_verification_sent/', email_verification_sent, name='email-verification-sent'),
     path('email_verification_success/', email_verification_success, name='email-verification-success'),

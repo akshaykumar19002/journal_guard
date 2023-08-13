@@ -6,7 +6,22 @@
         <div class="col-md-8 offset-md-2">
             <div class="card">
                 <div class="card-header">
-                    Journal Entry for {{ journal.created_at|date:"F d, Y" }}
+                    <div class="row">
+                        <div class="col-md-10">
+                            {{ journal.title }} posted on {{ journal.created_at|date:"F d, Y" }}
+                        </div>
+                        <div class="float-end col-md-2">
+                            <div class="float-end btn-group dropend">
+                                <a class="float-end p-2" role="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span><i class="float-end fa-solid fa-ellipsis-vertical"></i></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'journal:edit-journal' journal.id %}">Edit</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'journal:delete-journal' journal.id %}">Delete</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     {{ journal.content|safe }}

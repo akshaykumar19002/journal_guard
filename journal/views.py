@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.http import JsonResponse
+from .utils import *
 
 import uuid
 
@@ -18,6 +19,7 @@ def add_journal(request):
             journal = form.save(commit=False)
             journal.user = request.user
             journal.id = uuid.uuid4()
+            journal.content = encrypt(request, journal.content)
             journal.save()
             return redirect('dashboard:home')
     return render(request, 'journal/add-journal.html', {'form': form})
@@ -25,11 +27,14 @@ def add_journal(request):
 @login_required
 def edit_journal(request, id):
     journal = get_object_or_404(Journal, id=id)
+    journal.content = decrypt(request, journal.content)
     form = JournalForm(instance=journal)
     if request.method == 'POST':
         form = JournalForm(request.POST, instance=journal)
         if form.is_valid():
-            form.save()
+            journal = form.save(commit=False)
+            journal.content = encrypt(request, journal.content)
+            journal.save()
             return redirect('dashboard:home')
     return render(request, 'journal/edit-journal.html', {'form': form})
 
@@ -42,11 +47,14 @@ def delete_journal(request, id):
 @login_required
 def view_journal(request, id):
     journal = get_object_or_404(Journal, id=id)
+    journal.content = decrypt(request, journal.content)
     return render(request, 'journal/view-journal.html', {'journal': journal})
 
 @login_required
 def view_all_journals(request):
     journals = Journal.objects.filter(user=request.user)
+    for journal in journals:
+        journal.content = decrypt(request, journal.content)
     return render(request, 'journal/view-all-journals.html', {'journals': journals})
 
 @login_required

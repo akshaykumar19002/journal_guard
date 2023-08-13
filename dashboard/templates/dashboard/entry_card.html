@@ -1,0 +1,27 @@
+<div class="">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-10">
+                    <a href="{% url 'journal:view-journal' entry.id %}" class="">
+                    <h5 class="card-title">{{ entry.title }}</h5>
+                    </a>
+                    <span class="text-secondary">Posted on {{ entry.created_at }}</span>
+                    <p class="card-text">{{ entry.content }}</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="float-end btn-group dropend">
+                        <a class="float-end p-2" role="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span><i class="float-end fa-solid fa-ellipsis-vertical"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'journal:view-journal' entry.id %}">View</a></li>
+                            <li><a class="dropdown-item" href="{% url 'journal:edit-journal' entry.id %}">Edit</a></li>
+                            <li><a class="dropdown-item" href="{% url 'journal:delete-journal' entry.id %}">Delete</a></li>
+                        </ul>
+                    </div>          
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
