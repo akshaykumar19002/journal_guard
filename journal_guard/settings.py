@@ -111,6 +111,8 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
+SESSION_COOKIE_AGE = 8 * 60 * 60  # 8 hours, in seconds
+
 AUTH_USER_MODEL = 'user.User'
 
 # Database
